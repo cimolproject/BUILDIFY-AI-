@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101116"><title>BUILDIFY AI — 3D Builder</title>
+<link rel="stylesheet" href="src/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+</head>
+<body>
+<header class="top"><a class="brand" href="#"><span class="mark">B</span> BUILDIFY <b>AI</b></a><span class="tag">PROMPT + MULTI-VIEW → 3D</span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">AI-ASSISTED ROBLOX BUILDING WORKSPACE</p><h1>Build ideas.<br><em>Shape worlds.</em></h1><p class="sub">Ubah deskripsi atau referensi gambar menjadi draft bangunan 3D, lalu ekspor sebagai Luau Roblox.</p></div><div class="status"><i></i> LOCAL PROTOTYPE</div></section>
+<section class="workspace">
+<aside class="panel controls">
+<div class="tabs"><button class="tab active" data-tab="prompt">Prompt</button><button class="tab" data-tab="images">6 Views</button></div>
+<div id="promptPane" class="pane">
+<label for="prompt">DESKRIPSI BANGUNAN</label>
+<textarea id="prompt" rows="5" placeholder="Contoh: rumah modern dua lantai, atap datar, balkon depan, jendela kaca besar, warna putih dan abu-abu..."></textarea>
+<div class="row"><label for="style">GAYA</label><select id="style"><option value="modern">Modern</option><option value="simple">Simple / Low-poly</option><option value="industrial">Industrial</option><option value="traditional">Tradisional</option></select></div>
+<button id="buildPrompt" class="primary">✦ Generate dari Prompt</button>
+<p class="hint">Prototype ini membaca kata kunci dan menyusun geometri dasar di browser. Bukan model AI generatif sungguhan.</p>
+</div>
+<div id="imagesPane" class="pane hidden">
+<p class="hint">Masukkan gambar referensi. Keenam sisi membantu proses analisis, tetapi draft 3D tetap perlu koreksi manual.</p>
+<div class="uploadgrid" id="uploadGrid"></div>
+<button id="buildImages" class="primary">Analisis Referensi</button>
+</div>
+<div class="divider"></div>
+<label>UKURAN DRAFT</label>
+<div class="dims"><label>Lebar<input id="width" type="number" value="24" min="4" max="100"></label><label>Tinggi<input id="height" type="number" value="18" min="4" max="100"></label><label>Panjang<input id="depth" type="number" value="20" min="4" max="100"></label></div>
+<button id="reset" class="ghost">Reset model</button>
+</aside>
+<section class="panel preview">
+<div class="previewhead"><div><p class="eyebrow">LIVE VIEWPORT</p><h2>3D Preview</h2></div><span class="pill" id="modelState">Belum ada model</span></div>
+<div id="viewer"><div class="empty" id="emptyState"><span>◇</span><b>Workspace kosong</b><small>Masukkan prompt untuk membuat draft pertama.</small></div></div>
+<div class="viewfoot"><span>Drag: rotate · Scroll: zoom</span><button id="export" class="primary small">Export Luau ↗</button></div>
+</section>
+</section>
+<section class="panel feedback">
+<div><p class="eyebrow">HUMAN FEEDBACK LOOP</p><h2>Bantu BUILDIFY berkembang</h2><p class="hint">Feedback disimpan lokal. Bobot 4× / 10× adalah skor evaluasi, bukan pembaruan neural-network weights.</p></div>
+<div class="feedbackactions"><button id="critical" class="bad">✕ Gagal / Perlu perbaikan <b>4×</b></button><button id="positive" class="good">✓ Puas dengan hasil <b>10×</b></button></div>
+<div class="score"><span>Critical score <b id="criticalScore">0</b></span><span>Reward score <b id="rewardScore">0</b></span><span>Total feedback <b id="feedbackCount">0</b></span></div>
+</section>
+<section class="panel log"><div class="previewhead"><div><p class="eyebrow">OUTPUT</p><h2>Luau Script</h2></div><button id="copy" class="ghost">Copy code</button></div><pre id="code">-- Generate a model to see the Roblox Luau output.</pre></section>
+<footer>BUILDIFY AI · Browser-based prototype · No API key required</footer>
+</main>
+<script src="src/js/feedback-system.js"></script><script src="src/js/reconstruction.js"></script><script src="src/js/luau-exporter.js"></script><script src="src/js/app.js"></script>
+</body></html>
