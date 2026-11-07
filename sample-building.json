@@ -1,0 +1,9 @@
+{
+  "name": "Modern Starter House",
+  "prompt": "rumah modern dua lantai dengan balkon depan dan jendela kaca besar",
+  "dimensions": {
+    "width": 24,
+    "height": 18,
+    "depth": 20
+  }
+}
